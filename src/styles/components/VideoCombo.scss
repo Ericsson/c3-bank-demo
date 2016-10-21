@@ -1,0 +1,27 @@
+
+.VideoCombo {
+  @include flex(column, stretch);
+
+  position: relative;
+
+  .VideoCombo-self-view {
+    position: absolute;
+    left: $content-margin;
+    bottom: $content-margin;
+    overflow: hidden;
+    box-shadow: 0 0 5px 0px rgba(0,0,0,0.8);
+    margin: 8px;
+
+    width: 18%;
+
+    .Video {
+      object-fit: contain;
+    }
+  }
+
+  .VideoCombo-remote-view {
+    @include flex(column, stretch);
+    overflow: hidden;
+    position: relative;
+  }
+}

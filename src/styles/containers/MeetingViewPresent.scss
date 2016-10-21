@@ -1,0 +1,32 @@
+
+.MeetingViewPresent {
+  @include flex(column, stretch);
+  flex: 1 0 0%;
+  background-color: #e8e8e8;
+  position: relative;
+
+  .Video {
+    object-fit: contain;
+  }
+
+  .MeetingViewPresent-dialog {
+    h1 {
+      margin-bottom: 40px;
+    }
+  }
+
+  .MeetingViewPresent-button-container {
+    @include flex(column, center);
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+
+    .MeetingViewPresent-button {
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      background: $ericsson-peer-color;
+      color: $text-color-white;
+    }
+  }
+}

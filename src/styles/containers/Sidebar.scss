@@ -1,0 +1,145 @@
+
+.Sidebar {
+  @include flex(column, center);
+  flex: 0 0 $sidebar-size;
+  background: $sidebar-background-color;
+
+  .SidebarAvatarSlot {
+    flex: 0 0 $sidebar-size;
+    height: $sidebar-size;
+    width: $sidebar-size;
+  }
+
+  .SidebarAvatarSlot-avatar {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .SidebarAvatarSlot-video {
+    overflow: hidden;
+  }
+
+  .Username {
+    color: $sidebar-text-color;
+    text-align: center;
+  }
+
+  .tooltip-wrapper .tooltip {
+    background: #00AFF3;
+    padding: 10px;
+    color: #fff;
+    opacity: 0;
+    text-shadow: none;
+    margin-bottom: 5px;
+  }
+
+  .tooltip-wrapper .tooltip:before {
+    content: " ";
+  }
+
+  .tooltip-wrapper:hover .tooltip {
+    opacity: 1;
+  }
+
+  .Recorder {
+    border: 3px solid red;
+    border-radius: 40px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    display: flex;
+    margin: auto;
+
+    div {
+      border: 3px solid red;
+      border-radius: 40px;
+      height: 10px;
+      width: 10px;
+      background-color: red;
+      margin: auto;
+    }
+  }
+
+  .Recorder-pulse {
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+    opacity: 0.0;
+    z-index: 1000;
+  }
+
+  .Pulse {
+    cursor: pointer;
+    div {
+      padding: 0 3px;
+      color: #fff;
+      margin-top: 5px;
+    }
+  }
+  .Pulsing {
+    border: 3px solid red;
+    border-radius: 50%;
+    height: 20px;
+    width: 15px;
+    margin:0 auto;
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+    opacity: 0.0;
+    z-index: 1000;
+  }
+
+  @keyframes pulsate {
+    0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+    50% {opacity: 1.0;}
+    100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+  }
+
+  .ViewIconRow {
+    flex-grow: 1;
+  }
+
+  .MeetingChatToggle {
+    opacity: 1;
+    cursor: pointer;
+
+    .MeetingChatToggle--background {
+      color: $ericsson-light-blue;
+    }
+    .MeetingChatToggle--icon {
+      color: #fff;
+    }
+  }
+  .MeetingChatToggle-off {
+    .MeetingChatToggle--background {
+      color: #fff;
+    }
+    .MeetingChatToggle--icon {
+      color: $ericsson-light-blue;
+    }
+  }
+
+  .MeetingChatToggle:hover {
+    opacity: 0.8;
+  }
+
+  .Clock {
+    @include flex(row, flex-end);
+    color: $sidebar-text-color;
+    flex: 0 0 auto;
+    margin: 20px 0;
+    user-select: none;
+    cursor: default;
+  }
+}
+
+.Sidebar--spacing {
+  flex: 1;
+}
+
+.AdvisorSidebar-screen-sharing-indicator.fa {
+  color: #f00;
+  font-size: 15px;
+  opacity: 0.75;
+  text-shadow: 0 0 6px #f00;
+}

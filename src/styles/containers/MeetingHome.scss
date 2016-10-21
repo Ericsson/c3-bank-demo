@@ -1,0 +1,6 @@
+
+.MeetingHome {
+  @include flex(column, stretch);
+  background: $content-background-color;
+  // padding: $content-margin * 2;
+}

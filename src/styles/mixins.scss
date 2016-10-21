@@ -1,0 +1,9 @@
+
+@mixin flex($direction, $alignment) {
+  display: flex;
+  flex-flow: $direction nowrap;
+  align-items: $alignment;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}

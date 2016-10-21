@@ -1,0 +1,14 @@
+
+.MeetingViewLeave {
+  @include flex(column, center);
+  flex: 1 0 0%;
+  justify-content: center;
+  background-color: #fff;
+
+  .MeetingViewLeave-buttons {
+    @include flex(row, stretch);
+    justify-content: center;
+    margin-bottom: 7%;
+  }
+
+}

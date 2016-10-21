@@ -1,0 +1,34 @@
+
+.Root {
+  @include flex(column, stretch);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+@media all and (min-aspect-ratio: 1/1) {
+  .Root {
+    @include flex(row, stretch);
+  }
+}
+
+@media not all and (min-aspect-ratio: 1/1) {
+  .Root {
+    @include flex(column, stretch);
+  }
+}
+
+.App {
+  @include flex(column, stretch);
+  color: #525252;
+  flex: 2;
+  h1 {
+    font-weight: 400;
+    font-family: Arial;
+    font-size: 2.4em;
+  }
+}
+
+.App + div {
+  flex: 1;
+}

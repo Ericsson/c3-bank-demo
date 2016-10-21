@@ -1,0 +1,77 @@
+
+.customer-feedback {
+    background-image: url(../images/bg06.jpg);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fa-star:before { content: "\E008" }
+.fa-star-o:before { content: "\E009" }
+
+.FeedbackScreen-Logo {
+  position: fixed;
+  left: 30px;
+}
+.customer-feedback-form {
+    flex: 1;
+
+    @include flex(column, stretch);
+
+    .Dialog-container {
+      @include flex(row, center);
+      justify-content: center;
+    }
+
+    > * > .Dialog {
+        max-width: 400px;
+        text-align: center;
+
+        h1 {
+            font-size: 30px;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .customer-feedback-box {
+            @include flex(column, center);
+            margin: 5px 0 10px 0;
+
+            h4 {
+                margin: 0;
+                margin-top: 5px;
+                font-size: 20px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .fa {
+                font-size: 36px;
+                margin-top: 5px;
+                margin-right: 2px;
+                color: inherit;
+            }
+
+            .fa:hover {
+                color: lighten($text-color-dark, 35);
+            }
+
+            .yes-no-buttons {
+                @include flex(row, center);
+            }
+        }
+
+        .default-button {
+            margin: 5px 0;
+            display: inline-block;
+            align-self: center;
+        }
+    }
+}

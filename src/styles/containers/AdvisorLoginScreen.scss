@@ -1,0 +1,46 @@
+.AdvisorLoginScreen, .AdvisorRegisterScreen {
+  background-image: url(../images/bg01.jpeg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include flex(column, stretch);
+
+  .LoginScreen-Logo {
+    position: fixed;
+    left: 30px;
+  }
+
+  .AdvisorLoginScreen-divider {
+    margin: 0 15% 0 15%;
+  }
+
+  .LoginForm {
+    font-family: "Arial";
+
+    .LoginForm-fields {
+      @include flex(column, center);
+      width: 50%;
+      flex: 0;
+      margin: 0 auto;
+
+      label {
+        position: relative;
+        margin: -5px 0;
+      }
+
+      .LoginForm-input {
+        margin: 15px;
+        height: 40px;
+        width: 100%;
+        font-size: 15px;
+      }
+    }
+
+    .LoginForm-buttons {
+      @include flex(row, center);
+      justify-content: center;
+      padding: 15px 0 30px 0;
+    }
+  }
+}

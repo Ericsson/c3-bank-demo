@@ -1,0 +1,41 @@
+
+.MeetingViewCollaborate--files {
+  flex: 0 0 calc(33% - 20px);
+  width: calc(33% - 20px);
+}
+
+.MeetingViewCollaborate-file-list {
+  @include flex(column, stretch);
+  flex: 1 0 0%;
+  background-color: #fff;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+
+  .MeetingViewCollaborate-header {
+    flex: 0 0 auto;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: ($content-margin * 2);
+  }
+
+  .FileRefList {
+    flex: 0 0 auto;
+  }
+
+  .MeetingViewCollaborate--fileDropArea {
+    border: 3px dashed lighten($content-border-color, 25%);
+    border-radius: 20px;
+    margin: 20px;
+    padding: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+.MeetingScreen-file-over {
+
+  .MeetingViewCollaborate--fileDropArea {
+    border-color: $content-border-color;
+  }
+}

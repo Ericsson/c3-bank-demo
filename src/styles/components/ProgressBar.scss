@@ -1,0 +1,10 @@
+
+.ProgressBar {
+  background: #f8f8f8;
+}
+
+.ProgressBar--bar {
+  background: $ericsson-light-blue;
+  height: 12px;
+  transition: all 200ms;
+}

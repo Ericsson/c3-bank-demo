@@ -1,0 +1,94 @@
+
+.PdfEditor-render-document {
+  border-width: 2px;
+  border-style: dotted;
+  padding: 1em;
+  line-height: 1.5em;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.sign-btn {
+  background: #337ab7 !important;
+  text-shadow: none !important;
+  color: white !important;
+}
+
+.PdfEditor {
+  @include flex(column, stretch);
+}
+
+.PdfEditor--scrollContainer {
+  position: relative;
+  flex: 0 1 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.PdfEditor-document {
+  .pdfpage {
+    background: #fff;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 10px;
+  }
+
+  .pdfpage > canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .pdfpage > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .inputControl {
+    background: transparent;
+    border: 0px none;
+    position: absolute;
+    margin: auto;
+  }
+
+  .inputControl[type='checkbox'] {
+    margin: 0px;
+  }
+
+  .inputHint {
+    opacity: 0.2;
+    background: #ccc;
+    position: absolute;
+  }
+}
+
+.PdfEditor--progressContainer {
+  @include flex(row, center);
+  font-size: 1.2rem;
+}
+
+.PdfEditor--progress {
+  padding: 2px;
+  flex: 1;
+  background: #888;
+}
+
+.PdfEditor--progress-text {
+  margin: 0 10px;
+}
+
+.PdfEditor--footer {
+  @include flex(row, center);
+  flex: 1 0 auto;
+  padding: 10px;
+  border-top: $content-margin solid $content-border-color;
+}
+
+.PdfEditor--footer--sign.isDisabled {
+}

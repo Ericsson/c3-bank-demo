@@ -1,0 +1,31 @@
+.modal {
+  position: fixed;
+  z-index: 100000;
+  left:15vw;
+  right:45vw;
+  width: 70%;
+  height: 70%;
+  overflow: auto;
+  border: 1px solid #FBFBFB;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 10px 10px 49px 1px rgba(0,0,0,0.75);
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .file-input {
+  }
+
+  .image-capture-video{
+  }
+
+  .image-capture-canvas {
+    display:none;
+  }
+}

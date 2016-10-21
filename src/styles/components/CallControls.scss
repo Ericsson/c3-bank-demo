@@ -1,0 +1,61 @@
+
+.CallControls {
+  @include flex(row, center);
+  font-size: 0.7rem;
+  flex: 0 0 auto;
+  margin: $content-margin 0;
+  margin-bottom: 30px;
+
+  @keyframes pulsing {
+    0% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+  }
+
+  .UnreadNotification-container {
+    position: relative;
+  }
+
+  .UnreadNotification {
+    background-color: #ff0000;
+    animation: pulsing 0.7s running infinite ease;
+    z-index: 20;
+    position: absolute;
+    background-color: red;
+    padding: 3px 4px;
+    line-height: 0.95rem;
+    font-size: 0.9rem;
+    color: #FFF;
+    border-radius: 13px;
+    top: -3px;
+    right: 0;
+  }
+}
+
+.CallControls-item {
+  cursor: pointer;
+
+  .CallControls-secondary {
+    color: $ericsson-light-blue;
+  }
+  .CallControls-primary {
+    color: #fbfbfb;
+  }
+}
+
+.CallControls-item-off {
+  cursor: pointer;
+  .CallControls-secondary {
+    color: #fbfbfb;
+  }
+
+  .CallControls-primary {
+    color: $ericsson-light-blue;
+  }
+}

@@ -1,0 +1,28 @@
+.CustomerLandingPage {
+  background-image: url(../images/bg01.jpeg);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: 1;
+
+    @include flex(row, center);
+    justify-content: center;
+
+    .customDialog {
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      max-width: 40%;
+
+      h1 {
+        color: white;
+        font-size: 50px;
+        font-weight: normal;
+      }
+      p {
+        color: rgb(230,230,230);
+        margin: 10px;
+        font-size: 19px;
+        font-weight: 0;
+      }
+    }
+}

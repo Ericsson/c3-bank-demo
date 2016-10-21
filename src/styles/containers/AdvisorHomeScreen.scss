@@ -1,0 +1,116 @@
+.AdvisorHomeScreen {
+  padding: $content-margin;
+  background: $content-border-color;
+
+  .Sidebar-container {
+    @include flex(column, center);
+    justify-content: center;
+  }
+
+  .Sidebar-avatar-text {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .MeetingList {
+    overflow: scroll;
+    padding-left: 0;
+    ul {
+      padding: 0;
+    }
+  }
+
+  .MeetingBookingForm-button {
+    background: linear-gradient(to top, gray, white);
+    margin: 10px;
+    border: 0;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .AdvisorHomeScreen-meetings {
+     width: 100%;
+     margin-top: 65px;
+  }
+
+  .AdvisorHomeScreen-HeaderTitle {
+    color: #fff;
+    margin-left: 10%;
+    margin-top: 10px;
+  }
+
+  .AdvisorHomeScreen-HeaderSubtitle {
+    color: #999;
+    margin-left: 10%;
+    font-size: 1.1em;
+    position: relative;
+    top: -22px;
+  }
+
+  .AdvisorHomeScreen-meetingscreen {
+    @include flex(column, flex-start);
+    background: #fff;
+
+    .AdvisorHomeScreen-container {
+      max-width: 80%;
+      margin-right: auto;
+      margin-left: 10%;
+      height: 50px;
+    }
+  }
+
+  .BookingForm {
+    @include flex(row, stretch);
+  }
+
+  .MeetingListItem {
+    list-style-type: none;
+    margin: 2px 0;
+    @include flex(row, stretch)
+
+    .MeetingListItem-marker {
+      @include flex(row, center);
+      justify-content: flex-start;
+      width: 150px;
+      overflow: hidden;
+      background: linear-gradient(to top, $ericsson-blue, $ericsson-light-blue);
+      padding: 20px 0 20px 0;
+      color: #fff;
+
+      span {
+        margin-left: 5px;
+      }
+    }
+
+    .MeetingListItem-content {
+      width: 100%;
+      background: #F1F1F1;
+      @include flex(row, stretch);
+    }
+
+    .MeetingListItem-dropdown-content {
+      margin-left: 5px;
+      @include flex(column, flex-start);
+      justify-content: center;
+    }
+  }
+
+  .MeetingHeader {
+    @include flex(row, center);
+    justify-content: flex-start;
+
+    span {
+      color: red;
+      cursor: pointer;
+      font-size: large;
+    }
+  }
+
+  .scroll-box-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 65vh;
+  }
+}

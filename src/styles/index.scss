@@ -1,0 +1,62 @@
+
+@import 'mixins';
+@import 'fonts';
+@import 'variables';
+@import 'components/index';
+@import 'containers/index';
+@import '~react-notifications/lib/notifications';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  font-size: 14px;
+  font-weight: normal;
+  font-family: "Arial";
+}
+
+.default-button {
+  outline: none;
+  padding: 0 30px;
+  text-align: center;
+  display: block;
+  margin: 0 5px;
+  background: linear-gradient(to bottom, #fefefe, #bec2c5);
+  border-radius: 100px;
+  border: none;
+  text-decoration: none;
+  height: 36px;
+  line-height: 36px;
+  min-width: 120px;
+  color: #000;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  text-shadow: 0 1px 0 #FFF;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+.default-button.invert {
+  background: linear-gradient(to bottom, #305892, #00285F);
+  text-shadow: 0 -1px 0 #000;
+  font-weight: 300;
+  color: #fff;
+}
+
+.default-button.disabled {
+  color: #888;
+  cursor: default;
+}
+
+.divider {
+  margin: 10px 0;
+  align-self: stretch;
+  height: 2px;
+  background: #e8e8e8;
+}

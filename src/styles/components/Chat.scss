@@ -1,0 +1,96 @@
+
+
+.Chat {
+  @include flex(column, stretch);
+  justify-content: space-between;
+  overflow-y: hidden;
+
+  .ChatMessageList {
+    @include flex(column, stretch);
+    overflow-y: auto;
+    background: #fbfbfb;
+    padding-top: 5px;
+  }
+
+  .ChatMessage {
+    flex-shrink: 0;
+    align-self: flex-end;
+    margin: 0px 5px 1px 5px;
+    cursor: default;
+    max-width: calc(100% - 10px);
+
+    .ChatMessage-body {
+      display: inline-block;
+      margin: 0;
+      background: $ericsson-self-color;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 7px;
+      max-width: calc(100% - 20px);
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      text-align: left;
+
+      .ChatMessage-link {
+        pointer-events: all;
+        user-select: text;
+      }
+    }
+
+    .ChatMessage-meta {
+      margin: 0;
+      font-size: 10px;
+      opacity: 0;
+      transition: all 200ms ease-in-out;
+    }
+    &:hover .ChatMessage-meta {
+      opacity: 1;
+    }
+  }
+
+  .ChatMessage-peer {
+    align-self: flex-start;
+    .ChatMessage-body {
+      background: $ericsson-peer-color;
+    }
+  }
+
+  .ChatMessage-self {
+    text-align: end;
+  }
+
+  .ChatMessageInput {
+    @include flex(row, stretch);
+    flex: 0 0 32px;
+    border: 1px solid #e6e6e6;
+    font-size: 14px;
+    font-family: "Arial";
+
+/*         * {
+        font-size: 14px;
+        font-family: "Arial";
+    } */
+
+    .ChatMessageInput-input {
+      flex: 1 1;
+      padding-left: 10px;
+      font-size: 14px;
+      outline: none;
+      border: none;
+      font-weight: normal;
+      box-sizing: border-box;
+    }
+
+    .ChatMessageInput-send-button {
+      flex: 0 1 54px;
+      background: #fff;
+      border: none;
+      border-left: 1px solid #e6e6e6;
+      outline: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      color: $ericsson-blue;
+    }
+  }
+}

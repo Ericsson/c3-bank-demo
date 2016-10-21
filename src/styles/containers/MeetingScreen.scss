@@ -1,0 +1,33 @@
+
+.MeetingScreen {
+  @include flex(row, stretch);
+  background: $content-border-color;
+
+  .Chat {
+    position: absolute;
+    right: $sidebar-size;
+    bottom: 0;
+    margin: $content-margin;
+
+    width: 30%;
+    height: 30%;
+    min-height: 200px;
+    min-width: 240px;
+
+    box-shadow: 0 0 5px 0px rgba(0,0,0,0.8);
+  }
+
+  .Chat {
+    position: absolute;
+    right: $sidebar-size;
+    bottom: 0;
+    margin: 20px;
+
+    width: 30%;
+    height: 30%;
+    min-height: 200px;
+    min-width: 240px;
+
+    box-shadow: 0 0 5px 0px rgba(0,0,0,0.8);
+  }
+}

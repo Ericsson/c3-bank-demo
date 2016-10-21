@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "es2015",
+    "stage-1",
+    "react"
+  ],
+  "plugins": [
+    "lodash",
+    ["babel-plugin-module-alias", [
+      { "src": "./src/images", "expose": "images" },
+      { "src": "./src/actions", "expose": "actions" },
+      { "src": "./src/components", "expose": "components" },
+      { "src": "./src/containers", "expose": "containers" },
+      { "src": "./src/modules", "expose": "modules" }
+    ]]
+  ]
+}

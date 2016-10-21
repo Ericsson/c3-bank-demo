@@ -1,0 +1,124 @@
+
+.FileRefList {
+  @include flex(column, stretch);
+  padding: 0;
+  margin: 0;
+}
+
+.FileRefList-allowInput {
+  .FileRefListItem-selectable:hover {
+    cursor: pointer;
+    border: 1px solid lighten(#c5defc, 5%);
+    background: linear-gradient(to bottom, #ffffff 0%, lighten(#ebf4fd, 2%) 100%);
+  }
+}
+
+.FileRefListItem.FileRefListItem-selected {
+  .FileRefListItem-selectable {
+    border: 1px solid #c5defc;
+    background: linear-gradient(to bottom, #ffffff 0%, #ebf4fd 100%);
+  }
+}
+
+.FileRefListItem {
+  @include flex(column, stretch);
+  color: #44F;
+  margin: 2px $content-margin;
+
+  .FileRefListItem-row {
+    max-width: 100%;
+    @include flex(row, center);
+  }
+
+  .FileRefListItem-icon {
+    margin: 3px;
+    $icon-size: 16px;
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  .FileRefListItem-selectable {
+    @include flex(row, center);
+    flex: 1;
+    border-radius: 4px;
+    border: 1px solid transparent;
+  }
+
+  .FileRefListItem-name {
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+
+  .FileRefListItem-download {
+    color: #555;
+    padding: 4px;
+    margin-left: -4px;
+  }
+
+  .FileRefListItem-download:hover {
+    cursor: pointer;
+    color: #333;
+  }
+
+  .FileRefListItem-delete {
+    font-size: 10px;
+    cursor: pointer;
+    margin: 2px;
+
+    .fa-stop {
+      color: #f99;
+    }
+    .fa-close {
+      font-size: 14px;
+      color: #fff;
+    }
+    &:hover .fa-stop {
+      color: #f66;
+    }
+  }
+
+  .FileProgress {
+    margin: 3px 5px;
+    height: 2px;
+    flex: 1;
+
+    .FileProgress-bar {
+      height: 2px;
+    }
+  }
+
+  .FileTransferProgress {
+    background-color: $ericsson-self-color;
+    .FileTransferProgress-bar {
+      background-color: $ericsson-peer-color;
+    }
+  }
+
+  .FileFetchProgress {
+    background-color: $ericsson-peer-color;
+    .FileFetchProgress-bar {
+      background-color: $ericsson-self-color;
+    }
+  }
+}
+
+.file-upload-btn {
+     position: relative;
+    float:right;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 2em;
+    color:#00AFF3;
+    cursor:pointer;
+}
+
+.plus-upload-btn {
+  background: white;
+  color: #00AFF3;
+  margin-top: auto;
+  cursor: pointer;
+  margin-left: 5px;
+  padding: 5px;
+}

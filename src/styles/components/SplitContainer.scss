@@ -1,0 +1,17 @@
+
+.SplitContainer {
+  justify-content: space-between;
+}
+
+.SplitContainer-vertical {
+  @include flex(column, stretch);
+}
+
+.SplitContainer-horizontal {
+  @include flex(row, stretch);
+}
+
+.SplitContainer-divider {
+  background: transparent;
+  flex: 0 0 $content-margin;
+}

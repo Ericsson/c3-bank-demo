@@ -1,0 +1,19 @@
+
+$text-color-dark: #333;
+$text-color-white: #eee;
+
+$ericsson-grey: #58585a;
+$ericsson-blue: #305892;
+$ericsson-light-blue: #00285F;
+
+$content-margin: 0px;
+$content-background-color: #fff;
+$content-border-color: $ericsson-grey;
+
+$sidebar-background-color: $ericsson-grey;
+$sidebar-text-color: $text-color-white;
+
+$ericsson-self-color: lighten($ericsson-light-blue, 10);
+$ericsson-peer-color: #AAA;
+
+$sidebar-size: 140px;
