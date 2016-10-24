@@ -105,7 +105,7 @@ export function toggleRecording() {
         frameRate: screenSharingFrameRate,
       })
 
-      let recorder = new cct.media.Recorder()
+      let recorder = new cct.Recorder()
       let downloaded = false
       recorder.on('blob', (blob) => {
         blob.name = `recording-${new Date().toISOString()}.webm`
@@ -116,8 +116,8 @@ export function toggleRecording() {
         downloadFile(blob)
       })
 
-      let audioMixer = new cct.media.AudioMixer()
-      let streamMerger = new cct.media.StreamMerger()
+      let audioMixer = new cct.AudioMixer()
+      let streamMerger = new cct.StreamMerger()
       audioMixer.connect(streamMerger.audioInput)
       localRecorderSource.connect(streamMerger.videoInput)
 
