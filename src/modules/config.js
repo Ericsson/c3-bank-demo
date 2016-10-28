@@ -23,7 +23,7 @@ export const iceServers = [{
 export const serverUrl = 'https://demo.cct.ericsson.net'
 
 export const screenSharingFrameRate = 5
-export const chromeExtensionId = 'cnmkhalfebkmaacaikplgjoeifnfplfb'
+export const chromeExtensionId = 'epajpkbdigdpepgncdpmilaoamkjgoah'
 export const firefoxExtensionUrl = 'missing.xpi'
 export const firefoxExtensionHash = 'tbd'
 
