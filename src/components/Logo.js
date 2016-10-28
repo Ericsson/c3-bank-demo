@@ -7,6 +7,7 @@ const Logo = ({className = '', style = {}, ...props}) => (
   <div className={`Logo ${className}`} {...props} style={{
       backgroundImage: `url(${className == 'white' ? logoWhite : logo})`,
       backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
       width: 48,
       height: 64,
       marginTop: 30,
