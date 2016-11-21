@@ -9,6 +9,8 @@ import {SplitContainer, Avatar, Clock, Logo, IfNeedScreenSharingExtension, Heade
 import {SidebarAvatarSlot, FileModal} from 'containers'
 import defaultAvatar from '../images/default_user.png'
 
+const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
+
 class  MeetingHeader extends Component {
   constructor() {
     super()
@@ -191,32 +193,35 @@ class AdvisorHomeScreen extends Component {
   }
   render() {
     let extensionUrl = `https://chrome.google.com/webstore/detail/${chromeExtensionId}`
+    let message = null
+    if (isChrome) {
+      message =  `<IfNeedScreenSharingExtension extensionId={chromeExtensionId}>
+                    <h3 style={{color: '#f00'}}>
+                      Screen sharing extension is not installed. Get it from the <a target='_blank' href={extensionUrl}>Chrome web store</a>.
+                    </h3>
+                  </IfNeedScreenSharingExtension>`
+    }
     return (
-      <div className="AdvisorHomeScreen">
-        <SplitContainer style={{height: 'calc(100vh - 20px)'}} direction='horizontal'>
-          <div className="AdvisorHomeScreen-meetingscreen">
-            <Header>
-              <h1 className="AdvisorHomeScreen-HeaderTitle">Ericsson Web Meetings</h1>
-              <div className="AdvisorHomeScreen-HeaderSubtitle">Powered by Ericsson Contextual Communication Cloud</div>
-            </Header>
-            <div className="AdvisorHomeScreen-container">
-              <MeetingBookingForm />
-              <div className="AdvisorHomeScreen-meetings">
-                <h2>Today&#39;s Scheduled Meetings</h2>
-                <IfNeedScreenSharingExtension extensionId={chromeExtensionId}>
-                  <h3 style={{color: '#f00'}}>
-                    Screen sharing extension is not installed. Get it from the <a target='_blank' href={extensionUrl}>Chrome web store</a>.
-                  </h3>
-                </IfNeedScreenSharingExtension>
-                <MeetingList meetings={this.state.meetings}/>
-              </div>
-          </div>
-          </div>
-          <Sidebar client={this.context.client} router={this.context.router} />
-        </SplitContainer>
-      </div>
-    )
-  }
+        <div className="AdvisorHomeScreen">
+          <SplitContainer style={{height: 'calc(100vh - 20px)'}} direction='horizontal'>
+            <div className="AdvisorHomeScreen-meetingscreen">
+              <Header>
+                <h1 className="AdvisorHomeScreen-HeaderTitle">Ericsson Web Meetings</h1>
+                <div className="AdvisorHomeScreen-HeaderSubtitle">Powered by Ericsson Contextual Communication Cloud</div>
+              </Header>
+              <div className="AdvisorHomeScreen-container">
+                <MeetingBookingForm />
+                <div className="AdvisorHomeScreen-meetings">
+                  <h2>Today&#39;s Scheduled Meetings</h2>
+                  {message}
+                  <MeetingList meetings={this.state.meetings}/>
+                </div>
+            </div>
+            </div>
+            <Sidebar client={this.context.client} router={this.context.router} />
+          </SplitContainer>
+        </div>
+      )
 }
 
 export default connect()(AdvisorHomeScreen)
