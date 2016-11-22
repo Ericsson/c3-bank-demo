@@ -10,6 +10,8 @@ Demo application of many features in the C3 Web SDK, including:
 
 The app is hosted on [https://bank-demo.c3.ericsson.net](https://bank-demo.c3.ericsson.net)
 
+If you have questions about Ericsson Contextual Communication Cloud, please reach out at https://discuss.c3.ericsson.net
+
 ![sample](src/images/screenshot_login.png)
 
 ![sample](src/images/screenshot_inside.png)
