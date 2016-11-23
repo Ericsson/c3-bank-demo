@@ -222,6 +222,7 @@ class AdvisorHomeScreen extends Component {
           </SplitContainer>
         </div>
       )
+  }
 }
 
 export default connect()(AdvisorHomeScreen)
