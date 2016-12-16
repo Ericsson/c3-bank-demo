@@ -60,7 +60,6 @@ export function bootstrapCustomer(client, meetingId) {
       let call = room.startCall(creator)
       room.on(`event:${ADVISOR_ENTER_EVENT}`, function () {
         cct.log.info('meeting', `got advisor enter event, restarting call to ${creator}`)
-        call.stop()
         call.start()
       })
       return {room, call}
