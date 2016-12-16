@@ -13,7 +13,7 @@
   },
   "author": "Patrik Oldsberg <patrik.oldsberg@ericsson.com>",
   "devDependencies": {
-    "@cct/libcct": "0.15.5",
+    "@cct/libcct": "0.17.0",
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.7.2",
     "babel-loader": "^6.2.4",
