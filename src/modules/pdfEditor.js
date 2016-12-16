@@ -240,7 +240,7 @@ export default class PdfEditor {
                       // select box is not supported
             }
             input.className = 'inputControl'
-            input.name = item.fullName
+            input.name = item.id
             input.title = item.alternativeText
             assignFontStyle(input, item)
             this.bindInputItem(input, item)
