@@ -5,15 +5,17 @@ import {startScreenSharing, stopScreenSharing} from 'actions'
 import {Video, Dialog} from 'components'
 
 class MeetingViewPresent extends Component {
-  componentDidMount() {
-    this.props.remoteScreenSource.on('stream', () => {
+  constructor(props) {
+    super(props)
+    this._onRemoteStream = () => {
       this.forceUpdate()
-    })
+    }
+  }
+  componentDidMount() {
+    this.props.remoteScreenSource.on('stream', this._onRemoteStream)
   }
   componentWillUnmount() {
-    this.props.remoteScreenSource.off('stream', () => {
-      this.forceUpdate()
-    })
+    this.props.remoteScreenSource.off('stream', this._onRemoteStream)
   }
   renderAdvisor() {
     let {localScreenSource, startScreenSharing, stopScreenSharing} = this.props
