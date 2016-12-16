@@ -18,6 +18,7 @@ export default class PdfEditor extends Component {
     super()
     this.saveToPdf = this.saveToPdf.bind(this)
     this.setContainer = this.setContainer.bind(this)
+    this.onDataUpdate = this.onDataUpdate.bind(this)
     this.seqNum = 0
     this.state = {
       signing: false,
@@ -67,11 +68,12 @@ export default class PdfEditor extends Component {
         editor.setFormInputValue(key, value)
       })
 
-      data.off('update')
-      data.on('update', ({key, value}) => {
-        editor.setFormInputValue(key, value)
-      })
+      data.off('update', this.onDataUpdate)
+      data.on('update', this.onDataUpdate)
     }
+  }
+  onDataUpdate({key, value}) {
+    this.pdfEditor.setFormInputValue(key, value)
   }
   loadFile(file) {
     this.seqNum += 1
