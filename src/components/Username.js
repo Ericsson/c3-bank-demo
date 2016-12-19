@@ -9,10 +9,14 @@ class Username extends Component {
     this.state = {name}
   }
   getNameForUser(user) {
-    if (user && user.name) {
-      return user.name
+    if (user) {
+      if (user.name) {
+        return user.name
+      } else {
+        return user.id
+      }
     } else {
-      return user.localId
+      return '<unknown>'
     }
   }
   handleUpdate() {
