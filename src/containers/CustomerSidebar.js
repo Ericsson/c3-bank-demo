@@ -43,7 +43,7 @@ class CustomerSidebar extends Component {
 
 function getMeetingCreator(room) {
   if (room) {
-    return room.getCreator()
+    return room.creator
   } else {
     return null
   }
