@@ -44,6 +44,7 @@ export function selectEditorFile(fileRef) {
     let {meeting} = getState()
     let {stateSyncData} = meeting.stateSync
     if (fileRef) {
+      stateSyncData.set(STATE_EDITOR_FILE, null)
       stateSyncData.set(STATE_EDITOR_FILE, fileRef.name)
     } else {
       stateSyncData.delete(STATE_EDITOR_FILE)
@@ -99,8 +100,8 @@ export function setMeetingContext({role, room, call}) {
       remoteSource = call.getRemoteSource(MEDIA_SOURCE_NAME)
       remoteScreenSource = call.getRemoteSource(SCREEN_SOURCE_NAME)
 
-      stateSyncData = setupStateSync(call, state, role)
       fileShareData = setupFileShare(call, state, role)
+      stateSyncData = setupStateSync(call, state, role)
       signedShareData = setupSignedShare(call, state, role)
     }
 

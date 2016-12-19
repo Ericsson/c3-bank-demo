@@ -23,9 +23,15 @@ class FileUploadBtn extends Component {
         NotificationManager.error('File not supported!');
         return;
       }
-      return cct.FileRef.fromFile(file);
+      var fileRef = cct.FileRef.fromFile(file);
+      // Workaround for fileRef not having an Object prototype and redux complaining
+      fileRef.id = fileRef._id;
+      fileRef.hasOwnProperty = name => name === 'id'
+      return fileRef;
     });
     this.props.onUploadFiles(fileRefs);
+    event.target.type = ''
+    event.target.type = 'file'
   }
   render(){
     return(

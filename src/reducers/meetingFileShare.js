@@ -34,6 +34,7 @@ export default function fileShare(state = initialState, action) {
     }
     case FILE_SHARE_ADD_FILES: {
       let {fileShareData} = state
+      fileShareData.clear()
       action.fileRefs.forEach((fileRef) => {
         fileShareData.set(fileRef.name, fileRef)
       })
