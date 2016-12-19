@@ -58,9 +58,14 @@ export function fileShareAddFiles(fileRefs) {
 
 export function fileShareRemoveFile(fileRef) {
   return (dispatch, getState) => {
-    let {fileShareData} = getState().meeting.fileShare
+    let {meeting} = getState()
+    let {fileShareData} = meeting.fileShare
     if ({fileShareData}) {
       fileShareData.delete(fileRef.name)
+    }
+    let {stateSyncData} = meeting.stateSync
+    if (fileRef.name === stateSyncData.get(STATE_EDITOR_FILE)) {
+      stateSyncData.set(STATE_EDITOR_FILE, null)
     }
   }
 }
