@@ -9,7 +9,6 @@ import {
 } from 'modules/constants'
 
 const initialState = {
-  editDatas: null,
   currentData: null,
   currentFile: null,
 }
@@ -22,7 +21,7 @@ export default function editSync(state = initialState, action) {
         return initialState
       }
       let currentData = getEditDataForState(state)
-      return {...state, call, currentData, editDatas: {}}
+      return {...state, call, currentData}
     }
     case STATE_SYNC_EVENT: {
       if (action.event === 'unsubscribe') {
@@ -41,16 +40,15 @@ export default function editSync(state = initialState, action) {
   }
 }
 
-function getEditDataForState({call, currentFile, editDatas}) {
+function getEditDataForState({call, currentFile}) {
   if (!call || !currentFile) {
     return null
   }
   let name = `edit-data-${currentFile}`
-  let data = editDatas[name]
-  if (!data) {
-    data = new cct.DataShare()
-    call.attach(name, data)
-    editDatas[name] = data
+  let data = new cct.DataShare()
+  if (call.attachments[name]) {
+    call.detach(name)
   }
+  call.attach(name, data)
   return data
 }
