@@ -32,7 +32,7 @@ export default function chat(state = initialState, action) {
     case SET_MEETING_CONTEXT:
       let {room} = action
       if (room) {
-        room.load(1000)
+        // room.load(1000)
       }
       return state
     case ROOM_EVENT:
