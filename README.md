@@ -18,7 +18,11 @@ If you have questions about Ericsson Contextual Communication Cloud, please reac
 
 # Install and run
 
-Clone the repo and run
+Some packages are downloaded from `https://npm.cct.ericsson.net` via the `@cct` scope, so make sure you have run
+```bash
+$ npm config set @cct:registry https://npm.cct.ericsson.net
+```
+Then install dependencies using
 ```bash
 $ npm install
 ```
