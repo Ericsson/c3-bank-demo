@@ -133,7 +133,9 @@ export default class PdfEditor {
       if (input.type === 'checkbox') {
         input.checked = value
       } else if (!input.type || input.type === 'text') {
-        input.value = value
+        if (input.value !== value) {
+          input.value = value
+        }
       }
     }
   }
