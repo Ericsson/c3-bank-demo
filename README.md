@@ -22,7 +22,7 @@ Some packages are downloaded from `https://npm.cct.ericsson.net` via the `@cct` 
 ```bash
 $ npm config set @cct:registry https://npm.cct.ericsson.net
 ```
-Then install dependencies using
+Then install dependencies using `npm`. Make sure you are using a recent version, or you might run into trouble when building.
 ```bash
 $ npm install
 ```
