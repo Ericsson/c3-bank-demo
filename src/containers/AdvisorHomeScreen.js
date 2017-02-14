@@ -195,11 +195,13 @@ class AdvisorHomeScreen extends Component {
     let extensionUrl = `https://chrome.google.com/webstore/detail/${chromeExtensionId}`
     let message = null
     if (isChrome) {
-      message =  `<IfNeedScreenSharingExtension extensionId={chromeExtensionId}>
-                    <h3 style={{color: '#f00'}}>
-                      Screen sharing extension is not installed. Get it from the <a target='_blank' href={extensionUrl}>Chrome web store</a>.
-                    </h3>
-                  </IfNeedScreenSharingExtension>`
+      message =  (
+        <IfNeedScreenSharingExtension extensionId={chromeExtensionId}>
+          <h3 style={{color: '#f00'}}>
+            Screen sharing extension is not installed. Get it from the <a target='_blank' href={extensionUrl}>Chrome web store</a>.
+          </h3>
+        </IfNeedScreenSharingExtension>
+      )
     }
     return (
         <div className="AdvisorHomeScreen">
