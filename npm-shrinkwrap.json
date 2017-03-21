@@ -3,9 +3,9 @@
   "version": "0.1.1",
   "dependencies": {
     "@cct/libcct": {
-      "version": "0.18.0-rc1",
-      "from": "@cct/libcct@0.18.0-rc1",
-      "resolved": "https://npm.cct.ericsson.net/@cct%2flibcct/-/libcct-0.18.0-rc1.tgz"
+      "version": "0.18.7",
+      "from": "@cct/libcct@>=0.18.7 <0.19.0",
+      "resolved": "https://npm.cct.ericsson.net/@cct%2flibcct/-/libcct-0.18.7.tgz"
     },
     "adler32cs": {
       "version": "0.0.1",
