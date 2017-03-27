@@ -204,52 +204,53 @@ export default class PdfEditor {
       element.setAttribute('style', element.getAttribute('style') + fontStyles)
     }
 
-    return content.getAnnotations().then((items) => {
-      for (var i = 0; i < items.length; i++) {
-        var item = items[i]
-        switch (item.subtype) {
-          case 'Widget':
-            if (item.fieldType !== 'Tx' && item.fieldType !== 'Btn' &&
-                item.fieldType !== 'Ch') {
-              break
-            }
-            var inputDiv = createElementWithStyle('div', item)
-            inputDiv.className = 'inputHint'
-            div.appendChild(inputDiv)
-            var input
-            if (item.fieldType === 'Tx') {
-              input = createElementWithStyle('input', item)
-              if (!('fontSize' in item)) {
-                input.style.fontSize = `${scale * 12}px`
-              } else {
-                item.fontSize *= scale
-              }
-            }
-            if (item.fieldType === 'Btn') {
-              input = createElementWithStyle('input', item)
-              if (item.flags & 32768) {
-                input.type = 'radio'
-                        // radio button is not supported
-              } else if (item.flags & 65536) {
-                input.type = 'button'
-                    // pushbutton is not supported
-              } else {
-                input.type = 'checkbox'
-              }
-            }
-            if (item.fieldType === 'Ch') {
-              input = createElementWithStyle('select', item)
-                      // select box is not supported
-            }
-            input.className = 'inputControl'
-            input.name = item.id
-            input.title = item.alternativeText
-            assignFontStyle(input, item)
-            this.bindInputItem(input, item)
-            div.appendChild(input)
-            break
+    const handleInputField = (item, editableFormIndex) => {
+      var inputDiv = createElementWithStyle('div', item)
+      inputDiv.className = 'inputHint'
+      div.appendChild(inputDiv)
+      var input
+      if (item.fieldType === 'Tx') {
+        input = createElementWithStyle('input', item)
+        if (!('fontSize' in item)) {
+          input.style.fontSize = `${scale * 12}px`
+        } else {
+          item.fontSize *= scale
         }
+      } else if (item.fieldType === 'Btn') {
+        input = createElementWithStyle('input', item)
+        if (item.flags & 32768) {
+          input.type = 'radio'
+          // radio button is not supported
+        } else if (item.flags & 65536) {
+          input.type = 'button'
+          // pushbutton is not supported
+        } else {
+          input.type = 'checkbox'
+        }
+      } else if (item.fieldType === 'Ch') {
+        input = createElementWithStyle('select', item)
+        // select box is not supported
       }
+      input.className = 'inputControl'
+      input.title = item.alternativeText
+
+      let zeroBasedPageIndex = content.pageIndex
+      input.name = `${item.fieldType}:${zeroBasedPageIndex}:${editableFormIndex}`
+      editableFormIndex += 1
+
+      assignFontStyle(input, item)
+      this.bindInputItem(input, item)
+      div.appendChild(input)
+    }
+
+    return content.getAnnotations().then((items) => {
+      let textFields = items.filter(item => item.subtype === 'Widget' && item.fieldType === 'Tx')
+      let buttons = items.filter(item => item.subtype === 'Widget' && item.fieldType === 'Btn')
+      let checkboxes = items.filter(item => item.subtype === 'Widget' && item.fieldType === 'Ch')
+
+      textFields.forEach(handleInputField)
+      buttons.forEach(handleInputField)
+      checkboxes.forEach(handleInputField)
     })
   }
 
