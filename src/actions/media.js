@@ -82,7 +82,7 @@ export function stopScreenSharing() {
       cct.log.debug('meeting', 'ignored request to stop screen sharing when already inactive')
       return
     }
-    dispatch({type: SET_LOCAL_SCREEN_SOURCE, null})
+    dispatch({type: SET_LOCAL_SCREEN_SOURCE, localScreenSource: null})
     dispatch({
       type: SET_SCREEN_SHARING_STATUS,
       status: 'inactive',
@@ -98,7 +98,7 @@ export function toggleRecording() {
     let {recorderMediaSource, localSource, remoteSource} = media
     if(recorderMediaSource) {
       stateSyncData.set('recording', false)
-      dispatch({type: SET_LOCAL_RECORDER_SOURCE, null})
+      dispatch({type: SET_LOCAL_RECORDER_SOURCE, localScreenSource: null})
     } else {
       let localRecorderSource = new cct.ScreenSource({
         chromeExtensionId,
