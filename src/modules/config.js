@@ -14,9 +14,13 @@ setTimeout(() => {
 })
 
 export const iceServers = [{
-  urls: 'turn:static.verkstad.net:443?transport=tcp',
-  username: 'openwebrtc',
-  credential: 'secret',
+  url: 'turn:turn.demo.c3.ericsson.net:443?transport=tcp',
+  username: 'c3-turn',
+  credential: 'see-three',
+}, {
+  url: 'turn:turn.demo.c3.ericsson.net:443?transport=udp',
+  username: 'c3-turn',
+  credential: 'see-three',
 }]
 
 //export const serverUrl = 'http://localhost:8008'
