@@ -61,6 +61,7 @@ module.exports = {
     filename: '[name].js',
   },
   devServer: {
+    host: '0.0.0.0',
     contentBase: './dist',
     inline: true,
     hot: true,
@@ -79,3 +80,4 @@ module.exports = {
     }),
   ],
 }
+
