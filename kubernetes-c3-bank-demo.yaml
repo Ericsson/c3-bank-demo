@@ -1,0 +1,75 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ericsson
+  name: ericsson
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ericsson
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ericsson
+    spec:
+      containers:
+      - image: <yourusername/ericsson:latest>
+        imagePullPolicy: ""
+        name: ericsson
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 600
+          timeoutSeconds: 600
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - web-store
+            topologyKey: "kubernetes.io/hostname"
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ericsson
+spec:
+  type: NodePort
+  selector:
+     app: ericsson
+  ports:
+  - name: ericsson
+    protocol: TCP
+    nodePort: 30880
+    port: 80
+    targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+ name: ericsson
+spec:
+ rules:
+   - host: <ericsson.somedomain.com>
+     http:
+       paths:
+         - path: /
+           backend:
+             serviceName: ericsson
+             servicePort: 80
+
