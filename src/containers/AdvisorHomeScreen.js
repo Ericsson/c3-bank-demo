@@ -8,6 +8,7 @@ import {bookNewMeeting, createMeetingsQuery, createMeetingLink} from 'modules/ad
 import {SplitContainer, Avatar, Clock, Logo, IfNeedScreenSharingExtension, Header} from 'components'
 import {SidebarAvatarSlot, FileModal} from 'containers'
 import defaultAvatar from '../images/default_user.png'
+import { getChromeVersion } from '../modules/config';
 
 const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
 
@@ -191,10 +192,12 @@ class AdvisorHomeScreen extends Component {
   handleMeetingsUpdate(rows) {
     this.setState({meetings: rows.slice()})
   }
+
   render() {
     let extensionUrl = `https://chrome.google.com/webstore/detail/${chromeExtensionId}`
     let message = null
-    if (isChrome) {
+
+    if (isChrome && getChromeVersion() < 71 ) {
       message =  (
         <IfNeedScreenSharingExtension extensionId={chromeExtensionId}>
           <h3 style={{color: '#f00'}}>

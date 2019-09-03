@@ -19,6 +19,7 @@ import {
   TOGGLE_RECORDING,
   SET_LOCAL_RECORDER_SOURCE,
 } from './constants'
+import { getChromeVersion } from '../modules/config';
 
 export function setLocalMediaSource(localSource) {
   return {type: SET_LOCAL_MEDIA_SOURCE, localSource}
@@ -33,6 +34,11 @@ export function toggleVideo() {
 }
 
 export function startScreenSharing() {
+
+  if (getChromeVersion() < 71) {
+    return startScreenSharingExtension()
+  }
+
   return (dispatch, getState) => {
     let media = getState().meeting.media
     if (media.localScreenSource) {
@@ -57,8 +63,6 @@ export function startScreenSharing() {
     }).catch((error) => cct.log.error('meeting', 'screen sharing failed: ' + error))
   }
 }
-
-
 
 export function startScreenSharingExtension() {
   return (dispatch, getState) => {
