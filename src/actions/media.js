@@ -40,6 +40,34 @@ export function startScreenSharing() {
       return
     }
 
+    let localScreenSource = new cct.DeviceSource({
+      screen: true,
+    })
+    dispatch({type: SET_LOCAL_SCREEN_SOURCE, localScreenSource})
+
+    localScreenSource.promise.catch((error) => {
+      dispatch({type: SET_LOCAL_SCREEN_SOURCE, localScreenSource: null})
+      throw error
+    }).then(() => {
+      dispatch({
+        type: SET_SCREEN_SHARING_STATUS,
+        status: 'active',
+        message: 'Screen sharing is active',
+      })
+    }).catch((error) => cct.log.error('meeting', 'screen sharing failed: ' + error))
+  }
+}
+
+
+
+export function startScreenSharingExtension() {
+  return (dispatch, getState) => {
+    let media = getState().meeting.media
+    if (media.localScreenSource) {
+      cct.log.debug('meeting', 'ignored request to start screen sharing when already active')
+      return
+    }
+
     let localScreenSource = new cct.ScreenSource({
       chromeExtensionId,
       frameRate: screenSharingFrameRate,

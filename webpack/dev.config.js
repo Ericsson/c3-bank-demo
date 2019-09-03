@@ -67,6 +67,7 @@ module.exports = {
     inline: true,
     hot: true,
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new WebpackErrorNotificationPlugin(),

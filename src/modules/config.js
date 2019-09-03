@@ -14,16 +14,16 @@ setTimeout(() => {
 })
 
 export const iceServers = [{
-  url: 'turn:turn.demo.c3.ericsson.net:443?transport=tcp',
+  urls: 'turn:turn.demo.c3.ericsson.net:443?transport=tcp',
   username: 'c3-turn',
   credential: 'see-three',
 }, {
-  url: 'turn:turn.demo.c3.ericsson.net:443?transport=udp',
+  urls: 'turn:turn.demo.c3.ericsson.net:443?transport=udp',
   username: 'c3-turn',
   credential: 'see-three',
 }]
 
-//export const serverUrl = 'http://localhost:8008'
+// export const serverUrl = 'http://localhost:8008'
 export const serverUrl = 'https://demo.cct.ericsson.net'
 
 export const screenSharingFrameRate = 5
