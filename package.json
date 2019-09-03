@@ -13,7 +13,7 @@
   },
   "author": "Patrik Oldsberg <patrik.oldsberg@ericsson.com>",
   "dependencies": {
-    "@cct/libcct": "0.22.1",
+    "@cct/libcct": "^0.23.4-rc8.0",
     "html2canvas": "^0.5.0-beta4",
     "jspdf": "^1.2.61",
     "lodash": "^4.17.11",

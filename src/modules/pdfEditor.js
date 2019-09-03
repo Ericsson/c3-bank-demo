@@ -41,10 +41,10 @@ export default class PdfEditor {
       this.onProgress(0 / this.pdf.numPages)
     }
     if (this.resizeHandler) {
-      window.removeEventListener("resize", this.resizeHandler);
+      window.removeEventListener('resize', this.resizeHandler)
     }
     this.resizeHandler = this.createResizeHandler(100)
-    window.addEventListener("resize", this.resizeHandler);
+    window.addEventListener('resize', this.resizeHandler)
 
     return this.renderPage(element, 1, seqNum)
   }
@@ -52,7 +52,7 @@ export default class PdfEditor {
   cancelRender() {
     this.seqNum += 1
     if (this.resizeHandler) {
-      window.removeEventListener("resize", this.resizeHandler);
+      window.removeEventListener('resize', this.resizeHandler)
     }
   }
 
@@ -292,7 +292,7 @@ export default class PdfEditor {
     function outputSinglePage(renderedPage) {
       return renderedPage.then((canvas) => {
         let {width, height} = renderContext.internal.pageSize
-        let dataUrl = canvas.toDataURL('image/jpeg', 1.0 /*image quality*/)
+        let dataUrl = canvas.toDataURL('image/jpeg', 1.0 /* image quality*/)
         cct.log.debug('pdf', `rendering page: ${width}x${height}`)
         renderContext.addImage(dataUrl, 'JPEG', 0, 0, width, height)
       })
