@@ -1,17 +1,19 @@
 {
-  "presets": [
-    "es2015",
-    "stage-1",
-    "react"
-  ],
+  "presets": ["@babel/react","@babel/env"],
   "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-export-default-from",
     "lodash",
-    ["babel-plugin-module-alias", [
-      { "src": "./src/images", "expose": "images" },
-      { "src": "./src/actions", "expose": "actions" },
-      { "src": "./src/components", "expose": "components" },
-      { "src": "./src/containers", "expose": "containers" },
-      { "src": "./src/modules", "expose": "modules" }
-    ]]
+    ["module-resolver",{
+      "root": ["./src"],
+      "alias": {
+         "images": "./src/images",
+         "actions": "./src/actions",
+          "components": "./src/components",
+          "containers": "./src/containers",
+          "modules": "./src/modules"
+      }
+
+    }]
   ]
 }

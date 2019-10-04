@@ -53,14 +53,13 @@ export function register(client, fullname, username, password) {
   var options = {
     serverUrl: serverUrl,
     username: username,
-    password: password
+    password: password,
   }
   cct.log.info('Register', 'About to register user: ' + username)
 
   let name = username
 
   return cct.Auth.registerWithPassword(options).then(function (info) {
-    cct.log.info(info)
     cct.log.info('Register', 'Successfully registered user with id: ' + info.userId)
     cct.log.info('Client', 'Signing in user')
 

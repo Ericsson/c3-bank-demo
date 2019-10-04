@@ -1,6 +1,6 @@
 'use strict'
 
-import 'script!html2canvas'
+import 'script-loader!html2canvas'
 
 export default class PdfEditor {
   constructor(pdf) {
@@ -100,14 +100,14 @@ export default class PdfEditor {
       pageDivHolder.style.height = pageDisplayHeight + 'px'
       div.appendChild(pageDivHolder)
 
-            // Prepare canvas using PDF page dimensions
+      // Prepare canvas using PDF page dimensions
       var canvas = document.createElement('canvas')
       var canvasContext = canvas.getContext('2d')
       canvas.width = pageDisplayWidth
       canvas.height = pageDisplayHeight
       pageDivHolder.appendChild(canvas)
 
-            // Prepare and populate form elements layer
+      // Prepare and populate form elements layer
       var formDiv = document.createElement('div')
       pageDivHolder.appendChild(formDiv)
 
@@ -177,7 +177,7 @@ export default class PdfEditor {
     function createElementWithStyle(tagName, item) {
       var element = document.createElement(tagName)
       var rect = window.PDFJS.Util.normalizeRect(
-              viewport.convertToViewportRectangle(item.rect))
+        viewport.convertToViewportRectangle(item.rect))
       element.style.left = Math.floor(rect[0]) + 'px'
       element.style.top = Math.floor(rect[1]) + 'px'
       element.style.width = Math.ceil(rect[2] - rect[0]) + 'px'
@@ -244,9 +244,9 @@ export default class PdfEditor {
     }
 
     return content.getAnnotations().then((items) => {
-      let textFields = items.filter(item => item.subtype === 'Widget' && item.fieldType === 'Tx')
-      let buttons = items.filter(item => item.subtype === 'Widget' && item.fieldType === 'Btn')
-      let checkboxes = items.filter(item => item.subtype === 'Widget' && item.fieldType === 'Ch')
+      let textFields = items.filter((item) => item.subtype === 'Widget' && item.fieldType === 'Tx')
+      let buttons = items.filter((item) => item.subtype === 'Widget' && item.fieldType === 'Btn')
+      let checkboxes = items.filter((item) => item.subtype === 'Widget' && item.fieldType === 'Ch')
 
       textFields.forEach(handleInputField)
       buttons.forEach(handleInputField)
@@ -328,7 +328,7 @@ export default class PdfEditor {
       })
   }
 
-/*  saveToPdf(name, {onProgress} = {}) {
+  /*  saveToPdf(name, {onProgress} = {}) {
     let pages = [...this.element.querySelectorAll('.pdfpage')]
     let canvasPromises = pages.map((element) => window.html2canvas(element), (error) => { throw (error) })
     let renderContext = new window.jsPDF('p', 'pt', 'a4') // eslint-disable-line new-cap

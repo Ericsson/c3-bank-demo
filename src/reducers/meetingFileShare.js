@@ -36,6 +36,7 @@ export default function fileShare(state = initialState, action) {
       let {fileShareData} = state
       fileShareData.clear()
       action.fileRefs.forEach((fileRef) => {
+        if (!fileRef) return
         fileShareData.set(fileRef.name, fileRef)
       })
       return state

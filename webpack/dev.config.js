@@ -1,85 +1,86 @@
-
 var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var WebpackErrorNotificationPlugin = require('webpack-error-notification')
-var autoprefixer = require('autoprefixer')
 
-module.exports = {
-  entry: {
-    bundle: [
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/only-dev-server',
+module.exports = function () {
+  return {
+    entry: [
+      './src/cct.js',
+      './src/jspdf.js',
       './src/index.js',
     ],
-    cct: './src/cct.js',
-    jspdf: './src/jspdf.js',
-  },
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-    }, {
-      test: /\.scss$/,
-      loader: 'style!css!postcss!resolve-url!sass?sourceMap',
-    }, {
-      test: /\.css$/,
-      loader: 'style!css!postcss!resolve-url',
-    }, {
-      test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff',
-    }, {
-      test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff',
-    }, {
-      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/octet-stream',
-    }, {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'file',
-    }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=image/svg+xml',
-    }, {
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      loaders: [
-        'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
-      ],
-    }],
-  },
-  postcss: function () {
-    return [autoprefixer]
-  },
-  resolve: {
-    extensions: ['', '.js', '.scss', '.css'],
-  },
-  output: {
-    path: path.join(__dirname, '../dist'),
-    publicPath: '',
-    filename: '[name].js',
-  },
-  devServer: {
-    host: '0.0.0.0',
-    disableHostCheck: true, 
-    contentBase: './dist',
-    inline: true,
-    hot: true,
-  },
-  devtool: 'source-map',
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new WebpackErrorNotificationPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Web Meeting PoC',
-      hash: true,
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"development"',
+    module: {
+      rules: [{
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
       },
-    }),
-  ],
+      {
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!sass-loader?sourceMap',
+      }, {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+      },
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+      }, {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+      }, {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream',
+      }, {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+      }, {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+          // 'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false',
+        ],
+      },
+
+      ],
+    },
+    resolve: {
+      extensions: ['jsx', '.js', '.scss', '.css'],
+    },
+    output: {
+      path: path.join(__dirname, '../dist'),
+      publicPath: '',
+      filename: '[name].js',
+    },
+    devServer: {
+      historyApiFallback: true,
+      disableHostCheck: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      contentBase: './dist',
+      inline: true,
+      hot: true,
+    },
+    devtool: 'source-map',
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new WebpackErrorNotificationPlugin(),
+      new HtmlWebpackPlugin({
+        title: 'Web Meeting PoC',
+        hash: true,
+      }),
+      new webpack.DefinePlugin({
+        'process.env': {
+          NODE_ENV: '"development"',
+        },
+      }),
+    ],
+  }
 }
 

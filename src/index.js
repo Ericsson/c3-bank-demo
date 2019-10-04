@@ -1,10 +1,10 @@
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import configureStore from './store/configureStore'
 import configureClient from './store/configureClient'
 import {hashHistory} from 'react-router'
-import './styles/index'
+import '../node_modules/react-notifications/lib/notifications.css'
+import './styles/index.scss'
 
 const store = configureStore()
 const root = document.createElement('div')
